@@ -6,7 +6,7 @@ using CSV, DataFrames
 
 #= 
 form of csv dataframes:
-players.csv: players = DataFrame(playerName=String[],rating=Float64[],cost=Float64[])
+players.csv: players = DataFrame(playerName=String[],rating=Float64[],cost=Float64[],avgFantasyPoints=Float64[])
 matches.csv: matches = DataFrame(playerName1=String[],playerName2=String[])
 results.csv: results = DataFrame(player1Score=Int64[])
 allResults.csv: allResults = DataFrame(matchday=Int64[],playerName1=String[],playerName2=String[],playerRating1=Float64[],playerRating2=Float64[],player1ScoreplayerRating1=Int64[])
@@ -17,16 +17,21 @@ function readPlayers(;filename::String="players.csv")
     players = Player[]
     for entry = eachrow(playerDF)
         playerID = DataFrames.row(entry)
-        name,rating,cost = entry
-        push!(players,Player(name,rating,cost,playerID))
+        if "avgFantasyPoints" in names(playerDF)
+            name,rating,cost,avgFantasyPoints = entry
+        else
+            name,rating,cost = entry
+            avgFantasyPoints = 0
+        end
+        push!(players,Player(name,rating,cost,playerID,avgFantasyPoints))
     end
     return players
 end
 
 function writePlayers!(players::Vector{Player};filename::String="players.csv")
-    playerDF = DataFrame(playerName=String[],rating=Float64[],cost=Float64[])
+    playerDF = DataFrame(playerName=String[],rating=Float64[],cost=Float64[],avgFantasyPoints=Float64[])
     for player in players
-        push!(playerDF,(player.name,player.rating,player.cost))
+        push!(playerDF,(player.name,player.rating,player.cost,player.avgFantasyPoints))
     end
     CSV.write(filename, playerDF)
 end

@@ -1,15 +1,5 @@
-module BalatrELO
 
-using CSV, DataFrames
-
-include("General.jl")
-include("EloFunctions.jl")
-include("IOFunctions.jl")
-include("AnalysisFunctions.jl")
-
-end;
-
-#= using BalatrELO
+using BalatrELO
 
 leagueDataFN = "src\\leagueData\\"
 
@@ -28,4 +18,3 @@ matches = readNewMatches(players,filename=matchFilename)
 #stepThroughAllWeeks(leagueDataFN*"players_k20_w",leagueDataFN*"matches_w",leagueDataFN*"results_w",leagueDataFN*"allResults_k20.csv",2)
 giveExpectedScores(matches)
 giveMatchdayExpectedValue(matches)
- =#

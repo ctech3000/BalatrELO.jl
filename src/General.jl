@@ -5,6 +5,7 @@ mutable struct Player
     rating::Float64
     cost::Float64
     id::Int64
+    avgFantasyPoints::Float64
 end
 
 struct Match
