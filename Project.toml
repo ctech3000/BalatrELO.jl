@@ -1,0 +1,13 @@
+name = "BalatrELO"
+uuid = "d7b6a335-fdc9-41b7-80ad-c7580f59bdc9"
+authors = ["christoph-zetek"]
+version = "1.0.0-DEV"
+
+[compat]
+julia = "1.10.10"
+
+[extras]
+Test = "8dfed614-e22c-5e08-85e1-65c5234f0b40"
+
+[targets]
+test = ["Test"]
