@@ -11,7 +11,7 @@ allResultsFilename = leagueDataFN*"allResults_k20.csv"
 
 players = readPlayers(filename = playerFilename)
 matches = readNewMatches(players,filename=matchFilename)
-#results = readNewResults(matches,filename=resultFilename)
+results = readNewResults(matches,filename=resultFilename)
 #updateAllResults!(results,filename=allResultsFilename)
 #updateAllRatings!(results)
 #writePlayers!(players,filename=outputPlayerFileName)
