@@ -1,5 +1,5 @@
 
-export giveExpectedScores, giveMatchdayExpectedValue, matchesPlayed
+export giveExpectedScores, giveMatchdayExpectedValue, matchesPlayed, showPredictionResult
 
 function giveExpectedScores(matches::Vector{Match};print::Bool=true)
     expected = expectedScore.(matches)
@@ -42,4 +42,31 @@ function matchesPlayed(playerName::String,allResultsFN::String;print::Bool=true)
         end
     end
     return matchesPlayedDF
+end
+
+function showPredictionResult(results::Vector{Result};printErr::Bool=false,norm::String="l1")
+    println("==================================================")
+    println("Match results along with predictions based on elo:")
+    println("--------------------------------------------------")
+    diffs = Float64[]
+    for result in results
+        match = result.match
+        expected = expectedScore(match,which=0)
+        score = [result.player1Score,4-result.player1Score]
+        diff = score[1]-expected[1]
+        push!(diffs,diff)
+        print(match.players[1].name*" - "*match.players[2].name*":    $(score[1]) : $(score[2]) (expected $(round(expected[1],digits=1)) : $(round(expected[2],digits=1)))")
+        if printErr
+            print(" ($(round(score[1]-expected[2],digits=1))) ")
+        end
+        print("\n")
+    end
+    if printErr 
+        if norm == "l1"
+            res_norm = sum(abs.(diffs))/length(diffs)
+            println("--------------------------------------------------")
+            println("Total avg err ($(norm)): $res_norm")
+        end
+    end
+    println("==================================================")
 end
