@@ -57,7 +57,7 @@ function showPredictionResult(results::Vector{Result};printErr::Bool=false,norm:
         push!(diffs,diff)
         print(match.players[1].name*" - "*match.players[2].name*":    $(score[1]) : $(score[2]) (expected $(round(expected[1],digits=1)) : $(round(expected[2],digits=1)))")
         if printErr
-            print(" ($(round(score[1]-expected[2],digits=1))) ")
+            print(" ($(round(score[1]-expected[1],digits=1))) ")
         end
         print("\n")
     end
