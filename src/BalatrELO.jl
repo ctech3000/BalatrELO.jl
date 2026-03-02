@@ -6,6 +6,7 @@ include("General.jl")
 include("EloFunctions.jl")
 include("IOFunctions.jl")
 include("AnalysisFunctions.jl")
+include("InteractiveIO.jl")
 
 end;
 

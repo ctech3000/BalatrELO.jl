@@ -1,4 +1,4 @@
-export Player, Match, Result
+export Player, Match, Result, updateAvgFantasyScore!
 
 mutable struct Player
     name::String
@@ -15,4 +15,8 @@ end
 struct Result
     match::Match
     player1Score::Int64
+end
+
+function updateAvgFantasyScore!(player::Player,newScore::Float64)
+    player.avgFantasyPoints = newScore
 end
