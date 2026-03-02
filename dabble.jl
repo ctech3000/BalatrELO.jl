@@ -7,7 +7,7 @@ playerFilename = leagueDataFN*"players_k20_w3.csv"
 outputPlayerFileName = leagueDataFN*"players_k20_w4.csv"
 matchFilename = leagueDataFN*"matches_w4.csv"
 #resultFilename = leagueDataFN*"results_w3.csv"
-#allResultsFilename = leagueDataFN*"allResults_k20.csv"
+allResultsFilename = leagueDataFN*"allResults_k20.csv"
 
 players = readPlayers(filename = playerFilename)
 matches = readNewMatches(players,filename=matchFilename)
