@@ -1,7 +1,7 @@
 export expectedScore, ratingUpdate, updatePlayerRatings!, updateAllRatings!
 
 function expectedScore(match::Match; which::Int=1)
-    criticalRating = 5 # if diff between ratings bigger than this -> 3:1 victory very likely. Note: 3:1 instead of 4:0 since luck based variance? Might change.
+    criticalRating = 5 # if diff between ratings bigger than this -> 3:0 victory very likely
     ratings = [match.players[i].rating for i=1:2]
     expected = 4/(1+10^((ratings[2]-ratings[1])/criticalRating))
     if which == 1
